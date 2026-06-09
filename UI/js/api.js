@@ -1,6 +1,6 @@
 // ===== API BASE URL =====
 // After deploying backend on Render, paste your URL below (no trailing slash)
-const PRODUCTION_BACKEND = 'https://YOUR-APP-NAME.onrender.com';
+const PRODUCTION_BACKEND = 'https://bookmyshow-l0g1.onrender.com/';
 
 const BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8080'
