@@ -1,12 +1,16 @@
 // ===== API BASE URL =====
-// After deploying backend on Render, paste your URL below (no trailing slash)
-const PRODUCTION_BACKEND = 'https://bookmyshow-l0g1.onrender.com/';
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
-const BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+const BACKEND = isLocal
     ? 'http://localhost:8080'
-    : PRODUCTION_BACKEND;
+    : (window.BMS_BACKEND_URL || 'https://bookmyshow-l0g1.onrender.com').replace(/\/$/, '');
 
 const API = `${BACKEND}/api`;
+
+if (!isLocal && BACKEND.includes('YOUR-APP-NAME')) {
+    console.error('BMS: Set your Render URL in UI/js/config.js → window.BMS_BACKEND_URL');
+}
+console.log('BMS API:', API);
 
 // ===== GENERIC FETCH HELPERS =====
 async function apiGet(endpoint) {
