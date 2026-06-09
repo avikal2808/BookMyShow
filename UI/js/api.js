@@ -1,5 +1,12 @@
 // ===== API BASE URL =====
-const API = 'http://localhost:8080/api';
+// After deploying backend on Render, paste your URL below (no trailing slash)
+const PRODUCTION_BACKEND = 'https://YOUR-APP-NAME.onrender.com';
+
+const BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:8080'
+    : PRODUCTION_BACKEND;
+
+const API = `${BACKEND}/api`;
 
 // ===== GENERIC FETCH HELPERS =====
 async function apiGet(endpoint) {
